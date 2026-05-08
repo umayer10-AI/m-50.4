@@ -70,9 +70,10 @@ const run = async () => {
                 }
             }
 
-            
+            const result = await userCollection.updateOne(filter,updateDocument)
 
-            console.log(m)
+            console.log(result)
+            res.send(result)
         })
 
         await client.db("admin").command({ ping: 1 });

@@ -1,6 +1,7 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
+import { redirect } from "next/navigation"
 
 export const createUser = async (formData) => {
 
@@ -34,9 +35,10 @@ export const updateUser = async (id,formData) => {
         body: JSON.stringify(newUser)
     })
     const data = await res.json()
-    // if(data.insertedId){
-    //     revalidatePath("/user")
-    // }
+    if(data.modifiedCount > 0){
+        revalidatePath("/user")
+        redirect("/user")
+    }
     console.log(data)
     return data
 }
