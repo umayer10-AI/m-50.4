@@ -9,6 +9,7 @@ const page = async ({params}) => {
     const data = await getId(id)
 
     const a = async (formData) => {
+        'use server'
         await updateUser(id,formData)
     }
 
