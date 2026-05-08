@@ -5,7 +5,6 @@ import { revalidatePath } from "next/cache"
 export const createUser = async (formData) => {
 
     const newUser = Object.fromEntries(formData.entries())
-    console.log(newUser)
 
     const res = await fetch(`http://localhost:5000/user`,{
         method: "POST",
@@ -15,9 +14,10 @@ export const createUser = async (formData) => {
         body: JSON.stringify(newUser)
     })
     const data = await res.json()
-    // if(data.deletedCount > 0){
-    //     revalidatePath("/user")
-    // }
+    if(data.insertedId){
+        revalidatePath("/user")
+    }
+    console.log(data)
     return data
 }
 
