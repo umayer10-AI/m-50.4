@@ -9,7 +9,10 @@ const page = async () => {
 
     return (
         <div>
-            <h2>Data: {data.length}</h2>
+            <div>
+                <h2>Data: {data.length}</h2>
+                
+            </div>
             <TableTask p={data} deleteUser={deleteUser}></TableTask>
         </div>
     );
