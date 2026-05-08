@@ -5,6 +5,8 @@ export const deleteUser = async (id) => {
         method: "DELETE"
     })
     const data = await res.json()
-    console.log(data)
+    if(data.deletedCount > 0){
+        
+    }
     return data
 }
