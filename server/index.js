@@ -57,7 +57,22 @@ const run = async () => {
 
         app.patch("/user/:id", async (req,res) => {
             const id = req.params.id
-            console.log(id)
+            const filter = {
+                _id: new ObjectId(id)
+            }
+            const m = req.body
+
+            const updateDocument = {
+                $set: {
+                    name: m.name,
+                    email: m.email,
+                    role: m.role
+                }
+            }
+
+            
+
+            console.log(m)
         })
 
         await client.db("admin").command({ ping: 1 });
